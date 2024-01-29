@@ -1,0 +1,38 @@
+
+from string import digits, ascii_lowercase, ascii_uppercase
+from random import sample, shuffle
+
+n, m = [int(input()) for _ in 'ab']
+pass_lst = []
+
+
+def get_one_pass():
+	ch_d = sample(digs, d)
+	ch_l = sample(lowercase, l)
+	ch_u = sample(uppercase, u)
+	
+	res = list(ch_d + ch_l + ch_u)
+	shuffle(res)
+	res = ''.join(res)
+	return res
+
+
+x1 = ascii_lowercase.find('l')  # 11
+x2 = ascii_lowercase.find('o')  # 14
+x3 = ascii_uppercase.find('I')  # 8
+x4 = ascii_uppercase.find('O')  # 14
+
+digs = digits[2:]
+lowercase = ascii_lowercase[:11] + ascii_lowercase[12:14] + ascii_lowercase[15:]
+uppercase = ascii_uppercase[:8] + ascii_uppercase[9:14] + ascii_uppercase[15:]
+
+d = m // 3
+l = d + 1 if m % 3 else d
+u = d + 1 if m % 3 == 2 else d
+
+for _ in range(n):
+	pass_lst.append(get_one_pass())
+
+
+print(*pass_lst, sep='\n')
+
